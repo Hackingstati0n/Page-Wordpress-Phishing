@@ -4,7 +4,7 @@ Este repositório contém um código HTML utilizado para simulações de phishin
 
 ## Descrição
 
-![image](https://github.com/user-attachments/assets/3a429fc8-3aa2-4437-b653-f959a50a6f09)
+![image](https://github.com/user-attachments/assets/18c8f220-6feb-4117-a416-971f2b6c2e96)
 
 A página imita uma tela de login que pode ser configurada para parecer com diferentes sites ou serviços. O formulário de login coleta as informações do usuário (como nome de usuário e senha) e, ao ser submetido, envia esses dados junto com informações de geolocalização e IP para um webhook do Discord. A coleta de dados de login e informações de localização pode ser útil para campanhas de conscientização e testes de segurança.
 
