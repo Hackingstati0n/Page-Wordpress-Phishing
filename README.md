@@ -12,7 +12,7 @@ A página imita uma tela de login que pode ser configurada para parecer com dife
 
 ## Vantagens
 
-Com uma pagina dedicada você pode hospedar o site e deixa-lo aberto por quanto tempo quiser sem precisar subir o serviço com a sua maquina pessoal ou a necessidade de uma VPS para deixar online o tempo todo. Alem disso, por se um simples index você pode implementa-lo dentro de aplicações reais ou abusar de **CSRF**, **SSRF** ou **Clickjacking**
+Com uma página dedicada, você pode hospedar o site e mantê-lo ativo pelo tempo que quiser, sem precisar executar o serviço a partir da sua máquina pessoal ou depender de uma VPS para mantê-lo online continuamente. Além disso, por ser um simples arquivo **index.html**, você pode **integrá-lo em aplicações reais** ou **explorar** **vulnerabilidades** como **CSRF**, **SSRF** e **Clickjacking**.
 
 ## Funcionalidades
 
