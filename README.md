@@ -10,6 +10,10 @@ A página imita uma tela de login que pode ser configurada para parecer com dife
 
 **Atenção:** Este código é fornecido exclusivamente para fins educacionais, testes e simulações de segurança. O uso não autorizado deste código é ilegal e pode resultar em sérias consequências legais.
 
+## Vantagens
+
+Com uma pagina dedicada você pode hospedar o site e deixa-lo aberto por quanto tempo quiser sem precisar subir o serviço com a sua maquina pessoal ou a necessidade de uma VPS para deixar online o tempo todo. Alem disso, por se um simples index você pode implementa-lo dentro de aplicações reais ou abusar de **CSRF**, **SSRF** ou **Clickjacking**
+
 ## Funcionalidades
 
 - **Formulário de Login**: A página contém um formulário de login com campos para nome de usuário e senha.
