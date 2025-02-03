@@ -29,7 +29,7 @@ Com uma página dedicada, você pode hospedar o site e mantê-lo ativo pelo temp
 2. Ao enviar o formulário, o código JavaScript captura as informações inseridas e obtém dados de geolocalização através da API `ipinfo.io`.
 3. A informação é enviada via um webhook para o Discord, onde os dados aparecem como uma mensagem com as credenciais do usuário e a localização.
 
-![Captura de tela 2025-02-03 145225](https://github.com/user-attachments/assets/186927c7-f9bd-410a-a677-aa8ec33e3b7b)
+![image](https://github.com/user-attachments/assets/4366473c-95c0-422a-942f-50d288cc8512)
 
 ## Como Usar
 
